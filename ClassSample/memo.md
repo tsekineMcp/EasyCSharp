@@ -100,3 +100,18 @@ public class Person
    // Remaining implementation of Person class.
 }
 ```
+
+**Destructor**
+
+覚えなくていいが、constructorと同様、クラス名と同じメソッド名にするが、チルダを付ける。
+
+```csharp
+class Sample
+{
+    ~Sample()
+    {
+        Console.WriteLine("release memory");
+    }
+}
+```
+
