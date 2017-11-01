@@ -68,6 +68,3 @@ sealed class Sample
 
 
 
-
-### Syntax
-

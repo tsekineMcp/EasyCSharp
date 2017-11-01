@@ -1,41 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AbsInter
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main (string[] args)
         {
-            Card card = new SpadeAce();
-            card.Show();
+            ICalculator[] a = {
+                new A(), new B(), new C()
+            };
+
+            foreach(ICalculator calc in a)
+            {
+                int r = calc.Execute(3, 2);
+                Console.WriteLine(r);
+            }
         }
     }
 
-    abstract class Card // 抽象クラス
+    interface ICalculator
     {
-        abstract public string Mark { get; } // マークを表すプロパティが抽象化 abstract修飾
-        abstract public string Number { get; } // 数を表すプロパティが抽象化 abstract修飾
-        public void Show()
+        int Execute(int a, int b);
+    }
+
+    class A : ICalculator
+    {
+        public int Execute(int a, int b)
         {
-            Console.Write(Mark);
-            Console.Write(Number);
-            Console.ReadLine();
+            return a + b;
         }
     }
 
-    class SpadeAce : Card // 派生クラス
+    class B: ICalculator
     {
-        public override string Mark // Spadeのマークしか出せない。具体的な実装記述
+        public int Execute(int a, int b)
         {
-            get { return "Spade"; }
+            return a - b;
         }
-        public override string Number // Aしか出せない。具体的な実装記述
+    }
+
+    class C: ICalculator
+    {
+        public int Execute(int a, int b)
         {
-            get { return "A"; }
+            return a * b;
         }
     }
 }
